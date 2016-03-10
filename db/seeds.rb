@@ -8,17 +8,21 @@
 
 require 'json'
 
-json_courses = File.read('/home/jiaqi/Downloads/course.json')
+Course.delete_all
+Instructor.delete_all
+Subject.delete_all
+
+records = Array.new
+
+json_courses = File.read("#{Rails.root}/db/course.json")
 courses_obj = JSON.parse(json_courses)
 
-courses_obj.each do |course_record|
-  course_name = course_record['name']
-  course_id = course_record['subjects'][0].to_h['id']
-  #why there are multiple ids for one course?????
-  Course.create(name: course_name, subject_id: course_id)
-  #subject_id: course_record['subjects'][1]['id'])
-  #puts course_record['subjects'].size
-  #puts course_record['subjects'][1]
-  #puts "---------"
-  #puts course_record['subjects'][0].to_h['id']
-end
+courses = courses_obj.map {|r| {"name"=>r['name'], "subject_id"=>r['subjects'][0].to_h['id']}}
+# courses_obj.each do |course_record|
+#   course = {"name" => course_record['name'], "id" => course_record['subjects'][0].to_h['id']}
+#   records.add
+#   #course["name"] = course_record['name']
+#   #course["id"] = course_record['subjects'][0].to_h['id']
+# end
+
+Course.create(courses)

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  root 'landing#index'
+
+  get 'landing/' => 'landing#index'
+
+  resources :instructors
+  resources :courses
+  resources :subjects
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
