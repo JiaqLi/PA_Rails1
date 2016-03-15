@@ -11,6 +11,7 @@ require 'json'
 Course.delete_all
 Instructor.delete_all
 Subject.delete_all
+User.delete_all
 
 json_courses = File.read("#{Rails.root}/db/course.json")
 courses_obj = JSON.parse(json_courses)

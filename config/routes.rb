@@ -1,10 +1,24 @@
 Rails.application.routes.draw do
 
+  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+  resource :session, controller: "clearance/sessions", only: [:create]
+
+  resources :users, controller: "clearance/users", only: [:create] do
+    resource :password,
+      controller: "clearance/passwords",
+      only: [:create, :edit, :update]
+  end
+
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  get "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+  get "/sign_up" => "clearance/users#new", as: "sign_up"
   resources :users
 
   root 'landing#index'
 
   get 'landing/' => 'landing#index'
+
+  get '/login', to:"login#login"
 
   get 'subjects' => 'subjects#index'
   get 'courses' => 'courses#index'
