@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   get 'landing/' => 'landing#index'
 
+  get 'subjects' => 'subjects#index'
+  get 'courses' => 'courses#index'
+  get 'instructors' => 'instructors#index'
+
   resources :instructors
   resources :courses
   resources :subjects
