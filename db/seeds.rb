@@ -12,6 +12,7 @@ Course.delete_all
 Instructor.delete_all
 Subject.delete_all
 User.delete_all
+Enrollment.delete_all
 
 json_courses = File.read("#{Rails.root}/db/course.json")
 courses_obj = JSON.parse(json_courses)
@@ -28,3 +29,15 @@ subjects = subjects_obj.map {|r| {"name"=>r['name']}}
 Course.create(courses)
 Instructor.create(instructors)
 Subject.create(subjects)
+
+100.times do
+  User.create(name: Faker::Name.name,
+    #b_day: Faker::Date.birthday(min_age = 10, max_age = 30),
+    #f_book: "true", default_loc: Faker::Address.city,
+    email: Faker::Internet.email, encrypted_password: Faker::Number.number(6),
+    confirmation_token: Faker::Number.number(3), remember_token: Faker::Number.number(3))  
+end
+
+20.times do
+  Enrollment.create(user: User.all.sample, course: Course.all.sample)
+end

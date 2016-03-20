@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search/index'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -23,6 +25,9 @@ Rails.application.routes.draw do
   get 'subjects' => 'subjects#index'
   get 'courses' => 'courses#index'
   get 'instructors' => 'instructors#index'
+  get 'search' => 'search#index'
+  get 'searchresult' => 'search#result'
+
 
   resources :instructors
   resources :courses
