@@ -8,7 +8,9 @@ class Course < ActiveRecord::Base
     key = params[:keywords]
     id = params[:subject_id]
 
-    if key.present?
+    if key.present? && id.present?
+      where("name LIKE ? AND subject_id LIKE ?", "%#{key}%", "%#{id}%")
+    elsif key.present?
       where("name LIKE ?", "%#{key}%")
     elsif id.present?
       where("subject_id LIKE ?", "%#{id}%")
