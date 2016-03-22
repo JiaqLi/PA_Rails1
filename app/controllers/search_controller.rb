@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 
   def result
     @courses = Course.search(params)
-    puts @courses
-    gets
+    # puts @courses
+    # gets
   end
 end

@@ -32,6 +32,12 @@ Rails.application.routes.draw do
   resources :instructors
   resources :courses
   resources :subjects
+
+  resources :enrollments do
+    # member do
+    #   post 'enroll' => 'enrollment#create'
+    # end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

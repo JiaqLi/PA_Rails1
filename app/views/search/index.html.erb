@@ -7,6 +7,7 @@
     <label> Subject </label>
     <%= select_tag "subject_id", options_from_collection_for_select(Course.all, "subject_id", "subject_id", :subject => "subject_id") %>
     <!-- <%= text_field_tag :subject, params[:subject] %> -->
+    <!-- AND HOW DOES IT WORK??? -->
     <%= submit_tag "Search", :name => nil %>
   </p>
 
