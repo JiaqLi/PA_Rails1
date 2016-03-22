@@ -3,6 +3,8 @@ class SearchController < ApplicationController
   end
 
   def result
-    @courses = Course.search(params[:search])
+    @courses = Course.search(params)
+    puts @courses
+    gets
   end
 end

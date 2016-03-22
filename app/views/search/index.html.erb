@@ -2,7 +2,11 @@
 
 <%= form_tag searchresult_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
+    <label> Key Words </label>
+    <%= text_field_tag :keywords, params[:keywords] %>
+    <label> Subject </label>
+    <%= select_tag "subject_id", options_from_collection_for_select(Course.all, "subject_id", "subject_id", :subject => "subject_id") %>
+    <!-- <%= text_field_tag :subject, params[:subject] %> -->
     <%= submit_tag "Search", :name => nil %>
   </p>
 
