@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   get 'courses' => 'courses#index'
   get 'instructors' => 'instructors#index'
   get 'search' => 'search#index'
+  get 'do_search' => 'search#do_search', defaults: { format: 'js' }
   get 'searchresult' => 'search#result'
+  get 'do_search' => 'search#do_search'
 
 
   resources :instructors

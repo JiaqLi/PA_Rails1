@@ -1,15 +1,18 @@
-<h1>Search</h1>
+<div>
+  <h1>Search</h1>
+  <%= form_tag do_search_path, :method => 'get', :remote => true, :id => "search" do %>
+    <p>
+      <label> Key Words </label>
+      <%= text_field_tag :keywords, params[:keywords] %>
+      <label> Subject </label>
+      <%= select_tag "subject_id", options_for_select(@courses) %>
+      <!-- <%= text_field_tag :subject, params[:subject] %> -->
+      <!-- AND HOW DOES IT WORK??? -->
+      <!-- <%= submit_tag "Search", :name => nil %> -->
+    </p>
+  <% end %>
+</div>
 
-<%= form_tag searchresult_path, :method => 'get' do %>
-  <p>
-    <label> Key Words </label>
-    <%= text_field_tag :keywords, params[:keywords] %>
-    <label> Subject </label>
-    <%= select_tag "subject_id", options_from_collection_for_select(Course.all, "subject_id", "subject_id", :subject => "subject_id") %>
-    <!-- <%= text_field_tag :subject, params[:subject] %> -->
-    <!-- AND HOW DOES IT WORK??? -->
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-
-
-<% end %>
+<div>
+  <div id="search_results">
+</div>
